@@ -2,7 +2,7 @@ pipeline {
     agent {
             docker {
                 image 'node:lts-alpine'
-                args '-p 3000:3000 -p 5000:5000 -u root:root'
+                args '-u root:root'
             }
             }
     stages{
@@ -31,7 +31,7 @@ pipeline {
             }
             steps {
                 sh './scripts/deploy-for-production.sh'
-            }
+             }
         }
     }
 }
