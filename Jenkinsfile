@@ -1,30 +1,41 @@
 pipeline {
-    agent {
-            docker {
-                image 'node:lts-alpine'
-                args '-p 3000:3000 -p 5000:5000 -u root:root'
-            }
-            }
+    agent none
+
     stages{
         stage("Test"){
+            agent {
+                docker {
+                    image 'node:lts-alpine'
+                    args '-u root:root'
+                }
+            }
             steps{
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh './scripts/test.sh'
             }
         }
         stage("Build"){
+            agent {
+                docker {
+                    image 'node:lts-alpine'
+                    args '-u root:root'
+                }
+            }
             steps{
+                sh "chmod +x -R ${env.WORKSPACE}"
                 sh "npm install"
+                sh "./scripts/deliver-for-development.sh"
             }
         }
         stage("Deliver for Development"){
+            agent any
             when {
                 branch "development"
             }
             steps{
-                sh './scripts/deliver-for-development.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './scripts/kill.sh'
+                sh 'rm -rf /var/www/jenkins-weather-app-dev'
+                sh "cp -r ${env.WORKSPACE}/build /var/www/jenkins-weather-app-dev"
+                sh "ls /var/www/jenkins-weather-app-dev"
             }
         }
         stage("Deploy for Production"){
@@ -32,9 +43,9 @@ pipeline {
                 branch "production"
             }
             steps {
-                sh './scripts/deploy-for-production.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './scripts/kill.sh'
+                sh 'rm -rf /var/www/jenkins-weather-app-prod'
+                sh "cp -r ${env.WORKSPACE}/build /var/www/jenkins-weather-app-prod"
+                sh "ls /var/www/jenkins-weather-app-prod"
             }
         }
     }
