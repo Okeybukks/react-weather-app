@@ -1,9 +1,9 @@
 node {
     stage('Test Stage'){
         ws('/var/lib/jenkins/workspace/achebe'){
-            def nodeImage = docker.image('achebeh/conduit-app')
+            def nodeImage = docker.image('node:lts-alpine')
             nodeImage.inside('-u root:root',{
-            sh 'echo pulled'
+                sh "npm -v"
         })
         }
     }
