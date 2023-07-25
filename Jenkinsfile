@@ -1,10 +1,10 @@
 node {
     stage('Test Stage'){
         node {
-            def dockerImage = docker.image('node:lts-alpine')
-            dockerImage.inside{
+            def nodeImage = docker.image('node:lts-alpine')
+            nodeImage.inside('-u root:root',{
                 sh 'npm -v'
-            }
+            })
         }
     }
     stage("Build Stage"){
