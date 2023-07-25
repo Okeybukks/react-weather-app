@@ -1,5 +1,6 @@
+@Library('shared-library') _
 pipeline {
-    agent none
+    agent any
 
     stages{
         stage("Test"){
@@ -11,7 +12,7 @@ pipeline {
             }
             steps{
                 sh "chmod +x -R ${env.WORKSPACE}"
-                sh './scripts/test.sh'
+                sh './app/scripts/test.sh'
             }
         }
         stage("Build"){
@@ -20,22 +21,27 @@ pipeline {
                     image 'node:lts-alpine'
                     args '-u root:root'
                 }
+                
             }
             steps{
-                sh "chmod +x -R ${env.WORKSPACE}"
-                sh "npm install"
-                sh "./scripts/deliver-for-development.sh"
+                dir('./app'){
+                    sh "chmod +x -R ${env.WORKSPACE}"
+                    sh "npm install"
+                    sh "./scripts/deliver-for-development.sh"
+                
+                    archiveArtifacts artifacts: "build/**", fingerprint: true
+                }
+                
             }
         }
+
         stage("Deliver for Development"){
             agent any
             when {
                 branch "development"
             }
             steps{
-                sh 'rm -rf /var/www/jenkins-weather-app-dev'
-                sh "cp -r ${env.WORKSPACE}/build /var/www/jenkins-weather-app-dev"
-                sh "ls /var/www/jenkins-weather-app-dev"
+                deployReact("dev")
             }
         }
         stage("Deploy for Production"){
@@ -43,10 +49,8 @@ pipeline {
                 branch "production"
             }
             steps {
-                sh 'rm -rf /var/www/jenkins-weather-app-prod'
-                sh "cp -r ${env.WORKSPACE}/build /var/www/jenkins-weather-app-prod"
-                sh "ls /var/www/jenkins-weather-app-prod"
+                deployReact("prod")
             }
         }
-    }
+   }
 }
