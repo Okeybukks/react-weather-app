@@ -8,7 +8,7 @@ node {
 
             checkout scmGit(
                 branches: [[name: 'origin/main']],
-                remoteUserConfigs: [[
+                userRemoteConfigs: [[
                     url: 'https://github.com/Okeybukks/devops-automation.git'
                 ]]
             )
