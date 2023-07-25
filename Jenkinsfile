@@ -3,7 +3,7 @@ node {
         node {
             def dockerImage = docker.image('node:lts-alpine')
             dockerImage.inside{
-                'npm -v'
+                sh 'npm -v'
             }
         }
     }
