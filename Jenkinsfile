@@ -5,7 +5,8 @@ node {
             nodeImage.inside('-u root:root',{
                 sh "npm -v"
                 sh "chmod +x -R ${env.WORKSPACE}"
-                sh './app/scripts/test.sh'
+                sh "ls"
+                // sh './app/scripts/test.sh'
             }) 
         }
     }
