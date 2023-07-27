@@ -1,31 +1,23 @@
 node {
     stage('Test Stage'){
         ws('/var/lib/jenkins/workspace/achebe'){
-            // def nodeImage = docker.image('node:lts-alpine')
-            // nodeImage.inside('-u root:root',{
-            //     sh "npm -v"
-            // })
-
-            checkout scmGit(
-                branches: [[name: 'origin/main']],
-                userRemoteConfigs: [[
-                    url: 'https://github.com/Okeybukks/devops-automation.git'
-                ]]
-            )
-
-            def builtImage = docker.build('jenkins-test')
-            builtImage.inside{
-                sh "python3 --version"
-            }
+            def nodeImage = docker.image('node:lts-alpine')
+            nodeImage.inside('-u root:root',{
+                sh "npm -v"
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh './app/scripts/test.sh'
+            }) 
         }
     }
     stage("Build Stage"){
-        //cmd
+        sh 'echo "Hello!"'
     }
     stage("Dev Deployment"){
-        //cmd
+        if(env.Branch == "feature/scripting-pipeline"){
+            sh 'echo "Scripting-pipeline branch"'
+        }
     }
     stage("Prod Deployment"){
-        //cmd
+        sh 'echo "Hello!"'
     }
 }
