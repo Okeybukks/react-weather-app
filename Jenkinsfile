@@ -10,8 +10,12 @@ node {
         
     }
     stage("Build Stage"){
-        sh 'echo "Hello!"'
-        sh 'pwd'
+        dir('subDir') {
+            checkout scm
+            sh 'echo "Hello!"'
+            sh 'pwd'
+        }
+        
     }
     stage("Dev Deployment"){
         if(env.Branch == "feature/scripting-pipeline"){
