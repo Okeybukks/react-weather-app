@@ -7,10 +7,11 @@ node {
                 sh "ls"
                 // sh './app/scripts/test.sh'
             }) 
-        sh "ls"
+        
     }
     stage("Build Stage"){
         sh 'echo "Hello!"'
+        sh 'ls'
     }
     stage("Dev Deployment"){
         if(env.Branch == "feature/scripting-pipeline"){
