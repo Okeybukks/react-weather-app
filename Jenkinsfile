@@ -11,8 +11,7 @@ node {
     }
     stage("Build Stage"){
         sh 'echo "Hello!"'
-        sh 'ls'
-        sh 'dir'
+        sh 'pwd'
     }
     stage("Dev Deployment"){
         if(env.Branch == "feature/scripting-pipeline"){
