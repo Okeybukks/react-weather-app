@@ -13,6 +13,7 @@ pipeline {
             steps{
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh './app/scripts/test.sh'
+                sh 'ls && pwd'
             }
         }
         stage("Build"){
