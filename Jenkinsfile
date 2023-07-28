@@ -13,9 +13,10 @@ node {
             })  
     }
     stage("Build Stage"){
-        dir('.app/scripts'){
-            sh "ls"
-        }
+        // dir('.app/scripts'){
+        //     sh "ls"
+        // }
+        sh "ls"
     }
     stage("Dev Deployment"){
         if(env.Branch == "feature/scripting-pipeline"){
