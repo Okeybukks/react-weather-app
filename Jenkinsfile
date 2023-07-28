@@ -14,7 +14,7 @@ node {
             })  
 
         def changeLogSet = currentBuild.changeSets
-        println(changeLogSet)
+        println(changeLogSet.size())
     }
     // stage("Build Stage"){
     //     dir('app'){
