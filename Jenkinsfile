@@ -16,42 +16,42 @@ pipeline {
                 sh 'ls && pwd'
             }
         }
-        stage("Build"){
-            agent {
-                docker {
-                    image 'node:lts-alpine'
-                    args '-u root:root'
-                }
+        // stage("Build"){
+        //     agent {
+        //         docker {
+        //             image 'node:lts-alpine'
+        //             args '-u root:root'
+        //         }
                 
-            }
-            steps{
-                dir('./app'){
-                    sh "chmod +x -R ${env.WORKSPACE}"
-                    sh "npm install"
-                    sh "./scripts/deliver-for-development.sh"
+        //     }
+        //     steps{
+        //         dir('./app'){
+        //             sh "chmod +x -R ${env.WORKSPACE}"
+        //             sh "npm install"
+        //             sh "./scripts/deliver-for-development.sh"
                 
-                    archiveArtifacts artifacts: "build/**", fingerprint: true
-                }
+        //             archiveArtifacts artifacts: "build/**", fingerprint: true
+        //         }
                 
-            }
-        }
+        //     }
+        // }
 
-        stage("Deliver for Development"){
-            agent any
-            when {
-                branch "development"
-            }
-            steps{
-                deployReact("dev")
-            }
-        }
-        stage("Deploy for Production"){
-            when {
-                branch "production"
-            }
-            steps {
-                deployReact("prod")
-            }
-        }
+        // stage("Deliver for Development"){
+        //     agent any
+        //     when {
+        //         branch "development"
+        //     }
+        //     steps{
+        //         deployReact("dev")
+        //     }
+        // }
+        // stage("Deploy for Production"){
+        //     when {
+        //         branch "production"
+        //     }
+        //     steps {
+        //         deployReact("prod")
+        //     }
+        // }
    }
 }
