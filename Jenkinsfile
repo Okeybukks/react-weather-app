@@ -9,16 +9,11 @@ node {
             nodeImage.inside('-u root:root',{
                 sh "npm -v"
                 sh "chmod +x -R ${env.WORKSPACE}"
-            }) 
-
-            sh 'ls && pwd'
-        
+            })  
     }
     stage("Build Stage"){
         sh 'echo "Hello!"'
-        sh 'ls'
-
-        
+        sh 'ls' 
     }
     stage("Dev Deployment"){
         if(env.Branch == "feature/scripting-pipeline"){
