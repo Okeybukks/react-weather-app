@@ -9,12 +9,14 @@ node {
             nodeImage.inside('-u root:root',{
                 sh "npm -v"
                 sh "chmod +x -R ${env.WORKSPACE}"
-                sh 'echo Testing'
+                sh "echo Testing"
             })  
     }
     stage("Build Stage"){
         dir('app'){
-            sh "ls"
+            sh "npm install"
+            sh "./scripts/build-script.sh"
+            archiveArtifacts artifacts: "build/**", fingerprint: true
         }
     }
     stage("Dev Deployment"){
