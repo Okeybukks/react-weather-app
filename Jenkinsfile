@@ -1,3 +1,4 @@
+@Library('shared-library') _
 node {
     checkout scmGit(
         branches: [[name: 'feature/scripting-pipeline']],
@@ -20,11 +21,17 @@ node {
         }
     }
     stage("Dev Deployment"){
-        if(env.Branch == "feature/scripting-pipeline"){
-            sh 'echo "Scripting-pipeline branch"'
+        if(env.Branch == "development"){
+            dir('shared-library'){
+                deployReact("dev")
+            }
         }
     }
     stage("Prod Deployment"){
-        sh 'echo "Hello!"'
+        if(env.Branch == "production"){
+            dir('shared-library'){
+                deployReact("prod")
+            }
+        }
     }
 }
