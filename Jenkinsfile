@@ -11,7 +11,7 @@ node {
                 ])
             }) 
 
-            sh 'ls'
+            sh 'ls && pwd'
         
     }
     stage("Build Stage"){
