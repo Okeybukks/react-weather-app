@@ -12,26 +12,29 @@ node {
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh "echo Testing"
             })  
+
+        def changeLogSet = currentBuild.changeSets
+        println(changeLogSet)
     }
-    stage("Build Stage"){
-        dir('app'){
-            sh "npm install"
-            sh "./scripts/build-script.sh"
-            archiveArtifacts artifacts: "build/**", fingerprint: true
-        }
-    }
-    stage("Dev Deployment"){
-        if(env.Branch == "development"){
-            dir('shared-library'){
-                deployReact("dev")
-            }
-        }
-    }
-    stage("Prod Deployment"){
-        if(env.Branch == "production"){
-            dir('shared-library'){
-                deployReact("prod")
-            }
-        }
-    }
+    // stage("Build Stage"){
+    //     dir('app'){
+    //         sh "npm install"
+    //         sh "./scripts/build-script.sh"
+    //         archiveArtifacts artifacts: "build/**", fingerprint: true
+    //     }
+    // }
+    // stage("Dev Deployment"){
+    //     if(env.Branch == "development"){
+    //         dir('shared-library'){
+    //             deployReact("dev")
+    //         }
+    //     }
+    // }
+    // stage("Prod Deployment"){
+    //     if(env.Branch == "production"){
+    //         dir('shared-library'){
+    //             deployReact("prod")
+    //         }
+    //     }
+    // }
 }
