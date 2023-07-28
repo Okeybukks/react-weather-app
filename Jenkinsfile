@@ -14,7 +14,7 @@ node {
             })  
 
         def changeLogSet = currentBuild.changeSets.size()
-        for(i=0, i < changeLogSet, i++){
+        for(int i=0; i < changeLogSet; i++){
             def entries = changeLogSet[i].items
             println(entries[0])
             }
