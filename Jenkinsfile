@@ -18,7 +18,7 @@ node {
         dir('subDir') {
             checkout scm
             sh 'echo "Hello!"'
-            sh 'pwd'
+            sh 'ls'
         }
         
     }
