@@ -13,8 +13,12 @@ node {
                 sh "echo Testing"
             })  
 
-        def changeLogSet = currentBuild.changeSets
-        println(changeLogSet.size())
+        def changeLogSet = currentBuild.changeSets.size()
+        for(i=0, i < changeLogSet, i++){
+            def entries = changeLogSet[i].items
+            println(entries[0])
+            }
+        // println(changeLogSet.size())
     }
     // stage("Build Stage"){
     //     dir('app'){
