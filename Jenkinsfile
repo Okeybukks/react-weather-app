@@ -15,11 +15,10 @@ node {
         
     }
     stage("Build Stage"){
-        dir('subDir') {
-            checkout scm
-            sh 'echo "Hello!"'
-            sh 'ls'
-        }
+        // checkout scm
+        sh 'echo "Hello!"'
+        sh 'ls'
+
         
     }
     stage("Dev Deployment"){
