@@ -25,19 +25,20 @@ node {
         //     sh 'echo "Parallel 3"'
         //     sleep 10
         // }
-
-        def userInput = input(
-            id: "userInput",
-            message: "What branch do you want to run?",
-            submitterParameter: "What is your Name?",
-            parameters: [
-                string(name: 'environment', defaultValue: 'Dev', description: 'Valid inputes are: ["Dev", "Prod","Test"]'),
-                choice(name: 'region', choices: 'us-east-1a\nus-east-1b', description:'region to build infra'),
-                password(name: 'password', description: "input passowrd for AWS"),
-                credentials(name: 'docker-login', description: "Docker Details"),
-                file(name: 'file', description: 'my file')
-            ]
-        )
+        timeout(time: 3, unit: 'SECONDS') {
+            def userInput = input(
+                id: "userInput",
+                message: "What branch do you want to run?",
+                submitterParameter: "What is your Name?",
+                parameters: [
+                    string(name: 'environment', defaultValue: 'Dev', description: 'Valid inputes are: ["Dev", "Prod","Test"]'),
+                    choice(name: 'region', choices: 'us-east-1a\nus-east-1b', description:'region to build infra'),
+                    password(name: 'password', description: "input passowrd for AWS"),
+                    credentials(name: 'docker-login', description: "Docker Details"),
+                ]
+            )
+        }
+        
         println(userInput.environment)
         println(userInput.region)
 
