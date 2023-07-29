@@ -34,6 +34,7 @@ node {
                 string(name: 'environment', defaultValue: 'Dev', description: 'Valid inputes are: ["Dev", "Prod","Test"]'),
                 choice(name: 'region', choices: 'us-east-1a\nus-east-1b', description:'region to build infra'),
                 password(name: 'password', description: "input passowrd for AWS", required: true)
+                credentials(name: 'docker-login', type: usernamepassword, description: "Docker Details", required: true)
             ]
         )
         println(userInput.environment)
