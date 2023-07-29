@@ -26,10 +26,17 @@ node {
         //     sleep 10
         // }
 
-        input(
+        def userInput = input(
+            id: "userInput"
             message: "What branch do you want to run?",
-            submitter: "What is your Name?"
+            submitterParameter: "What is your Name?",
+            parameters: [
+                string(name: 'environment', defaultValue: 'Dev', description: 'Valid inputes are: ["Dev", "Prod","Test"]')
+            ]
+
+            println(userInput.environment)
         )
+
         
     }
     // stage("Build Stage"){
