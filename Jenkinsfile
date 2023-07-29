@@ -35,7 +35,7 @@ node {
                 choice(name: 'region', choices: ['us-east-1a','us-east-1b', description:'region to build infra' ])
             ]
         )
-        println(userInput.environment)
+        println(userInput.environment, userInput.region)
 
         
     }
