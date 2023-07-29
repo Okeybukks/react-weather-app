@@ -32,7 +32,7 @@ node {
             submitterParameter: "What is your Name?",
             parameters: [
                 string(name: 'environment', defaultValue: 'Dev', description: 'Valid inputes are: ["Dev", "Prod","Test"]'),
-                choice(name: 'region', choices: ['us-east-1a','us-east-1b', description:'region to build infra' ])
+                choice(name: 'region', choices: ('us-east-1a','us-east-1b', description:'region to build infra'))
             ]
         )
         println(userInput.environment, userInput.region)
