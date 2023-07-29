@@ -5,6 +5,13 @@ node {
         userRemoteConfigs: [
             [ url: 'https://github.com/Okeybukks/react-weather-app.git' ]
     ])
+    properties([
+        buildDiscarder(
+            logRotator(
+                numToKeepStr: '5'
+            )
+        )
+    ])
     stage('Test Stage'){
         def nodeImage = docker.image('node:lts-alpine')
             nodeImage.inside('-u root:root',{
@@ -25,22 +32,6 @@ node {
         //     sh 'echo "Parallel 3"'
         //     sleep 10
         // }
-        timeout(time: 3, unit: 'SECONDS') {
-            def userInput = input(
-                id: "userInput",
-                message: "What branch do you want to run?",
-                submitterParameter: "What is your Name?",
-                parameters: [
-                    string(name: 'environment', defaultValue: 'Dev', description: 'Valid inputes are: ["Dev", "Prod","Test"]'),
-                    choice(name: 'region', choices: 'us-east-1a\nus-east-1b', description:'region to build infra'),
-                    password(name: 'password', description: "input passowrd for AWS"),
-                    credentials(name: 'docker-login', description: "Docker Details"),
-                ]
-            )
-        }
-        
-        println(userInput.environment)
-        println(userInput.region)
 
         
     }
