@@ -33,9 +33,8 @@ node {
             parameters: [
                 string(name: 'environment', defaultValue: 'Dev', description: 'Valid inputes are: ["Dev", "Prod","Test"]')
             ]
-
-            println(userInput.environment)
         )
+        println(userInput.environment)
 
         
     }
