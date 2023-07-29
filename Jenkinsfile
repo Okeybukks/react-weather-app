@@ -16,11 +16,11 @@ node {
         parallel "Parallel 1":{
             sh 'echo "Parallel 1"'
             sleep 10
-        }
+        },
         "Parallel 2":{
             sh 'echo "Parallel 2"'
             sleep 10
-        }
+        },
         "Parallel 3":{
             sh 'echo "Parallel 3"'
             sleep 10
