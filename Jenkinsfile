@@ -33,7 +33,7 @@ node {
             parameters: [
                 string(name: 'environment', defaultValue: 'Dev', description: 'Valid inputes are: ["Dev", "Prod","Test"]'),
                 choice(name: 'region', choices: 'us-east-1a\nus-east-1b', description:'region to build infra'),
-                password(namd: 'password', description: "input passowrd for AWS", required: true)
+                password(name: 'password', description: "input passowrd for AWS", required: true)
             ]
         )
         println(userInput.environment)
