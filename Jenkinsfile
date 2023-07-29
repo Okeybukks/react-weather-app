@@ -13,18 +13,23 @@ node {
                 sh "echo Testing"
             })  
 
-        parallel "Parallel 1":{
-            sh 'echo "Parallel 1"'
-            sleep 10
-        },
-        "Parallel 2":{
-            sh 'echo "Parallel 2"'
-            sleep 10
-        },
-        "Parallel 3":{
-            sh 'echo "Parallel 3"'
-            sleep 10
-        }
+        // parallel "Parallel 1":{
+        //     sh 'echo "Parallel 1"'
+        //     sleep 10
+        // },
+        // "Parallel 2":{
+        //     sh 'echo "Parallel 2"'
+        //     sleep 10
+        // },
+        // "Parallel 3":{
+        //     sh 'echo "Parallel 3"'
+        //     sleep 10
+        // }
+
+        input(
+            message: "What branch do you want to run?"
+            submitter: "What is your Name?"
+        )
         
     }
     // stage("Build Stage"){
