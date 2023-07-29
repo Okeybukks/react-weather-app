@@ -13,11 +13,18 @@ node {
                 sh "echo Testing"
             })  
 
-        def changeLogSet = currentBuild.changeSets
-        for(int i=0; i < changeLogSet.size(); i++){
-            def entries = changeLogSet[i].items
-            println(entries)
-            }
+        parallel "Parallel 1":{
+            sh 'echo "Parallel 1"'
+            sleep 10
+        }
+        "Parallel 2":{
+            sh 'echo "Parallel 2"'
+            sleep 10
+        }
+        "Parallel 3":{
+            sh 'echo "Parallel 3"'
+            sleep 10
+        }
         
     }
     // stage("Build Stage"){
