@@ -27,7 +27,7 @@ node {
         // }
 
         def userInput = input(
-            id: "userInput"
+            id: "userInput",
             message: "What branch do you want to run?",
             submitterParameter: "What is your Name?",
             parameters: [
