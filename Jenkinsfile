@@ -10,7 +10,8 @@ node {
             logRotator(
                 numToKeepStr: '5'
             )
-        )
+        ),
+        disableConcurrentBuilds()
     ])
     stage('Test Stage'){
         def nodeImage = docker.image('node:lts-alpine')
