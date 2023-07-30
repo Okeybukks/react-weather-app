@@ -17,7 +17,7 @@ node {
             booleanParam(name: 'build', defaultValue: true),
             password(name: 'password', defaultValue: ''),
             choice(name: 'region', choices: 'us-east-1a\nus-east-1b'),
-            credentials(name: 'docker-id', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')
+            credentials(name: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')
         ])
     ])
     stage('Test Stage'){
@@ -27,7 +27,7 @@ node {
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh "touch test.txt"
                 sh "ls"
-                sh "echo ${params.environment}, ${params.build}, ${params.region}, ${params.docker-id}"
+                sh "echo ${params.environment}, ${params.build}, ${params.region}, ${params.docker}"
             })  
 
         // def formerBuild = currentBuild.previousBuild.result
