@@ -21,6 +21,9 @@ node {
                 sh "echo Testing"
             })  
 
+        def formerBuild = previousBuild.result()
+        println(formerBuild)
+
         // parallel "Parallel 1":{
         //     sh 'echo "Parallel 1"'
         //     sleep 10
