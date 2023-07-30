@@ -19,8 +19,6 @@ node {
             choice(name: 'region', choices: 'us-east-1a\nus-east-1b'),
             credentials(name: 'docker-id')
         ])
-
-        sh "echo params.environment, params.build, params.choice, params.docker-id.username"
     ])
     stage('Test Stage'){
         def nodeImage = docker.image('node:lts-alpine')
@@ -29,6 +27,7 @@ node {
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh "touch test.txt"
                 sh "ls"
+                sh "echo params.environment, params.build, params.choice, params.docker-id.username"
             })  
 
         // def formerBuild = currentBuild.previousBuild.result
@@ -48,9 +47,6 @@ node {
         // }
 
         
-    }
-    stage("Parameters"){
-        sh "ls"
     }
     // stage("Build Stage"){
     //     dir('app'){
