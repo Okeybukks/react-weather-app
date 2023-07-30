@@ -18,11 +18,12 @@ node {
             nodeImage.inside('-u root:root',{
                 sh "npm -v"
                 sh "chmod +x -R ${env.WORKSPACE}"
-                sh "echo Testing"
+                sh "touch test.txt"
+                sh "ls"
             })  
 
-        def formerBuild = currentBuild.previousBuild.result
-        println(formerBuild)
+        // def formerBuild = currentBuild.previousBuild.result
+        // println(formerBuild)
 
         // parallel "Parallel 1":{
         //     sh 'echo "Parallel 1"'
@@ -38,6 +39,9 @@ node {
         // }
 
         
+    }
+    stage("Test 2"){
+        sh "ls"
     }
     // stage("Build Stage"){
     //     dir('app'){
