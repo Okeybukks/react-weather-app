@@ -27,7 +27,7 @@ node {
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh "touch test.txt"
                 sh "ls"
-                sh "echo ${params.environment}, ${params.build}, ${params.region}, ${USERNAME}"
+                sh "echo ${params.environment}, ${params.build}, ${params.region}, ${params.docker-id}"
             })  
 
         // def formerBuild = currentBuild.previousBuild.result
