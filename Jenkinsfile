@@ -14,7 +14,7 @@ node {
         disableConcurrentBuilds(),
         parameters([
             string(name: 'environment', defaultValue: 'Dev', description: "Allowed values Dev, Prod, Test"),
-            booleanParams(name: 'build', defaultValue: true),
+            booleanParam(name: 'build', defaultValue: true),
             password(name: 'password', defaultValue: ''),
             choice(name: 'region', choices: 'us-east-1a\nus-east-1b'),
             credentials(name: 'docker-id')
