@@ -11,7 +11,16 @@ node {
                 numToKeepStr: '5'
             )
         ),
-        disableConcurrentBuilds()
+        disableConcurrentBuilds(),
+        parameters([
+            string(name: 'environment', defaultValue: 'Dev', description: "Allowed values Dev, Prod, Test"),
+            booleanParams(name: 'build', defaultValue: true),
+            password(name: 'password', defaultValue: '')
+            choice(name: 'region', choices: 'us-east-1a\nus-east-1b')
+            credentials(name: 'docker-id')
+        ])
+
+        sh "echo params.environment, params.build, params.choice, params.docker-id.username"
     ])
     stage('Test Stage'){
         def nodeImage = docker.image('node:lts-alpine')
@@ -40,7 +49,7 @@ node {
 
         
     }
-    stage("Test 2"){
+    stage("Parameters"){
         sh "ls"
     }
     // stage("Build Stage"){
