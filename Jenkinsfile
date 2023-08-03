@@ -15,11 +15,12 @@ node {
     ]
 
     def gitBranch = env.BRANCH_NAME
+    println(stageMatrix.getClass())
 
-    for(int i = 0; i <= 3; i++){
-        def value = stageMatrix[i]
-        sh "echo 'Achebe'"
-    }
+    // for(int i = 0; i <= 3; i++){
+    //     def value = stageMatrix[i]
+    //     sh "echo 'Achebe'"
+    // }
     
     // stage('Test Stage'){
     //     sh "echo ${gitBranch}"
