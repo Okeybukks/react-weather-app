@@ -18,7 +18,7 @@ node {
 
     for(int i = 0; i <= stageMatrix.size; i++){
         def value = stageMatrix[i]
-        echo "Achebe"
+        sh "echo 'Achebe'"
     }
     
     // stage('Test Stage'){
