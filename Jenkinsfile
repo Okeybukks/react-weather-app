@@ -16,13 +16,13 @@ node {
 
     def keys = stageMatrix.keySet()
     println(keys.size())
-    def gitBranch = env.BRANCH_NAME
 
-    // for(int i = 0; i < keys.size; i++){
-    //     def value = stageMatrix[i]
-    //     println(value)
+    for(int i = 0; i < keys.size(); i++){
+        def key = keys[i]
+       
+        println(stageMatrix.get(key))
         
-    // }
+    }
     
     // stage('Test Stage'){
     //     sh "echo ${gitBranch}"
