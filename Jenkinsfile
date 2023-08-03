@@ -12,9 +12,6 @@ node {
             )
         ),
         disableConcurrentBuilds(),
-        parameters([
-            choice(name: "environment", choices: "dev\nprod", description: "Environment to run build.")
-        ])
     ])
     def gitBranch = env.BRANCH_NAME
     
