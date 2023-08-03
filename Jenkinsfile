@@ -16,9 +16,6 @@ node {
     def gitBranch = env.BRANCH_NAME
     
     stage('Test Stage'){
-        
-        def environment = params.environment
-        sh "echo ${environment}"
         sh "echo ${gitBranch}"
     }
     // stage("Build Stage"){
