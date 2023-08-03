@@ -16,7 +16,7 @@ node {
 
     def keys = stageMatrix.keySet()
     envi = 'feature/*'
-    def test = (envi =~ '^feat')
+    def test = (envi =~ '^peat')
     if(test){
         println(true)
     }
