@@ -13,7 +13,7 @@ node {
 
     def deployment_env = environment(gitBranch)
     
-    println(deployment_env)
+    echo deployment_env
     
     // stage('Test Stage'){
     //     sh "echo ${gitBranch}"
