@@ -13,7 +13,7 @@ node {
         ),
         disableConcurrentBuilds(),
         parameters([
-            choice(name: "environment", choices: "dev\nprod", description: "Environment to run build.", defaultValue: "dev")
+            choice(name: "environment", choices: "dev\nprod", description: "Environment to run build.")
         ])
     ])
     stage('Test Stage'){
