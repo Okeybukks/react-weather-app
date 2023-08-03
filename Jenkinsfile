@@ -16,7 +16,7 @@ node {
 
     def gitBranch = env.BRANCH_NAME
 
-    for(int i = 0; i <= stageMatrix.size, i++){
+    for(int i = 0; i <= stageMatrix.size; i++){
         println(stageMatrix[i])
     }
     
