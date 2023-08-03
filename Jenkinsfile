@@ -15,14 +15,22 @@ node {
     ]
 
     def keys = stageMatrix.keySet()
-    println(keys.size())
-
-    for(int i = 0; i < keys.size(); i++){
-        def key = keys[i]
-       
-        println(stageMatrix.get(key))
-        
+    envi = 'feature/*'
+    def test = (envi =~ '^feat')
+    if(test){
+        println(true)
     }
+    else{
+        println(false)
+    }
+
+
+    // for(int i = 0; i < keys.size(); i++){
+    //     def key = keys[i]
+       
+    //     println(stageMatrix.get(key))
+        
+    // }
     
     // stage('Test Stage'){
     //     sh "echo ${gitBranch}"
