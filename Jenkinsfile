@@ -1,10 +1,5 @@
 @Library('shared-library') _
 node {
-    checkout scmGit(
-        branches: [[name: 'feature/scripting-pipeline']],
-        userRemoteConfigs: [
-            [ url: 'https://github.com/Okeybukks/react-weather-app.git' ]
-    ])
     properties([
         buildDiscarder(
             logRotator(
@@ -13,7 +8,17 @@ node {
         ),
         disableConcurrentBuilds(),
     ])
+
+    def stageMatrix = [
+        'dev' : ['feature/*', 'develop'],
+        'prod': ['master']
+    ]
+
     def gitBranch = env.BRANCH_NAME
+
+    for(int i = 0; i <= stageMatrix.size, i++){
+        println(stageMatrix[i])
+    }
     
     stage('Test Stage'){
         sh "echo ${gitBranch}"
