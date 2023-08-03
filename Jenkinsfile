@@ -15,11 +15,10 @@ node {
     ]
 
     def keys = stageMatrix.keySet()
-    println(keys)
-
+    println(keys.size)
     def gitBranch = env.BRANCH_NAME
 
-    // for(int i = 0; i < stageMatrix.size(); i++){
+    // for(int i = 0; i < keys.size; i++){
     //     def value = stageMatrix[i]
     //     println(value)
         
