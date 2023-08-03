@@ -16,7 +16,7 @@ node {
             choice(name: "environment", choices: "dev\nprod", description: "Environment to run build.")
         ])
     ])
-    def gitBranch = ${GIT_BRANCH}
+    def gitBranch = ${env.GIT_BRANCH}
     stage('Test Stage'){
         def environment = params.environment
         sh "echo ${environment}"
