@@ -16,7 +16,7 @@ node {
 
     def gitBranch = env.BRANCH_NAME
     def branch = "feature/*"
-    if(gitBranch = (branch =~ '^feat') || gitBranch = (branch[1] =~ '^dev')){
+    if(gitBranch == (branch =~ '^feat') || gitBranch == (branch =~ '^dev')){
         println(true)
     }
     else{
