@@ -12,22 +12,16 @@ node {
             )
         ),
         disableConcurrentBuilds(),
+        parameters([
+            choice(name: "environment", choices: "dev\nprod", description: "Environment to run build.", defaultValue: "dev")
+        ])
     ])
     stage('Test Stage'){
-        def nodeImage = docker.image('node:lts-alpine')
-            nodeImage.inside('-u root:root',{
-                sh "npm -v"
-                sh "chmod +x -R ${env.WORKSPACE}"
-                sh "touch test.txt"
-                sh "ls"
-            })        
+        def environment = params.environment
+        sh "echo ${environment}"
     }
     // stage("Build Stage"){
-    //     dir('app'){
-    //         sh "npm install"
-    //         sh "./scripts/build-script.sh"
-    //         archiveArtifacts artifacts: "build/**", fingerprint: true
-    //     }
+
     // }
     // stage("Dev Deployment"){
     //     if(env.Branch == "development"){

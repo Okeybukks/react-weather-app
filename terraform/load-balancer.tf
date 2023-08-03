@@ -37,7 +37,7 @@ resource "aws_lb_listener" "forwarding" {
   }
 }
 
-resource "aws_lb_listener" "redirecting" {
+resource "aws_lb_listener" "http-forward" {
   load_balancer_arn = aws_lb.load-balncer.arn
   port              = "80"
   protocol          = "HTTP"
