@@ -14,10 +14,9 @@ node {
         'prod': ['master']
     ]
 
-    def keys = stageMatrix.keySet()
-    envi = 'feature/*'
-    def test = (envi =~ '^peat')
-    if(test){
+    def gitBranch = env.BRANCH_NAME
+    def branch = "feature/*"
+    if(gitBranch = (branch =~ '^feat') || gitBranch = (branch[1] =~ '^dev')){
         println(true)
     }
     else{
@@ -26,9 +25,15 @@ node {
 
 
     // for(int i = 0; i < keys.size(); i++){
-    //     def key = keys[i]
-       
-    //     println(stageMatrix.get(key))
+    //     def environment = keys[i]
+    //     def branch = stageMatrix.get(key)
+
+    //     if(gitBranch = (branch[0] =~ '^feat') || gitBranch = (branch[1] =~ '^dev')){
+    //         println(true)
+    //     }
+    //     else{
+    //         println(false)
+    //     }
         
     // }
     
