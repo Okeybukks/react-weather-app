@@ -9,33 +9,11 @@ node {
         disableConcurrentBuilds(),
     ])
 
-    def stageMatrix = [
-        'dev' : ['feature/*', 'develop'],
-        'prod': ['master']
-    ]
-
     def gitBranch = env.BRANCH_NAME
-    println(gitBranch)
-    if(gitBranch =~ 'feat*'){
-        println(true)
-    }
-    else{
-        println(false)
-    }
 
-
-    // for(int i = 0; i < keys.size(); i++){
-    //     def environment = keys[i]
-    //     def branch = stageMatrix.get(key)
-
-    //     if(gitBranch = (branch[0] =~ '^feat') || gitBranch = (branch[1] =~ '^dev')){
-    //         println(true)
-    //     }
-    //     else{
-    //         println(false)
-    //     }
-        
-    // }
+    def deployment_env = environment(gitBranch)
+    
+    println(deployment_env)
     
     // stage('Test Stage'){
     //     sh "echo ${gitBranch}"
