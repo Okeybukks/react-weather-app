@@ -1,10 +1,10 @@
 def call(String gitBranch){
     if(gitBranch =~ '^feat' || gitBranch =~ '^dev'){
-        def environment = 'dev'
+        def envi = 'dev'
     }
     else if(gitBranch =~ '^mas') {
-        def environment = 'prod'
+        def envi = 'prod'
     }
 
-    return environment
+    return envi
 }
