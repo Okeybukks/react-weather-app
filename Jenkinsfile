@@ -11,15 +11,15 @@ node {
 
     def gitBranch = env.BRANCH_NAME
     
-    def envi-val = environment(gitBranch)
-    println(envi-val)
+    def value = environment(gitBranch)
+    println(value)
     
     // stage('Test Stage'){
     //     sh "echo ${gitBranch}"
     // }
     // stage("Build Stage"){
 
-    // }
+    // }test
     // stage("Dev Deployment"){
     //     if(env.Branch == "development"){
     //         dir('shared-library'){
