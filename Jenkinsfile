@@ -12,12 +12,12 @@ node {
     def gitBranch = env.BRANCH_NAME
     
     // environment(gitBranch)
-    def type1 = gitEnvironment(gitBranch)
-    println(type1)
     
-    // stage('Test Stage'){
-    //     sh "echo ${gitBranch}"
-    // }
+    
+    stage('Test Stage'){
+        def type1 = gitEnvironment(gitBranch)
+        println(type1)
+    }
     // stage("Build Stage"){
 
     // }test
