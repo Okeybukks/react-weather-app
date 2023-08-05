@@ -13,10 +13,10 @@ node {
     def envi = ""
 
     if(gitBranch =~ '^feat' || gitBranch =~ '^dev'){
-        envi = 'dev'
+        println(true)
     }
     else if(gitBranch =~ '^mas') {
-        envi = 'prod'
+        println(false)
     }
 
     println(env)
