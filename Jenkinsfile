@@ -11,8 +11,7 @@ node {
 
     def gitBranch = env.BRANCH_NAME
     
-    def value = environment(gitBranch)
-    println(value)
+    environment(gitBranch)
     
     // stage('Test Stage'){
     //     sh "echo ${gitBranch}"
