@@ -15,8 +15,7 @@ node {
     
     
     stage('Test Stage'){
-        def type1 = gitEnvironment(gitBranch)
-        println(type1)
+        gitEnvironment(gitBranch)
     }
     // stage("Build Stage"){
 
