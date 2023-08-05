@@ -18,7 +18,7 @@ node {
         def envi = 'prod'
     }
 
-    println(${envi})
+    println($envi)
     
     // stage('Test Stage'){
     //     sh "echo ${gitBranch}"
