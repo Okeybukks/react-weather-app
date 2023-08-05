@@ -21,7 +21,7 @@ node {
         println(envi)
     }
 
-    println(env)
+    println(envi)
     
     // stage('Test Stage'){
     //     sh "echo ${gitBranch}"
