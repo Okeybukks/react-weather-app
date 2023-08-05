@@ -12,7 +12,8 @@ node {
     def gitBranch = env.BRANCH_NAME
     
     // environment(gitBranch)
-    println(gitBranch..getClass().getName())
+    def type1 = gitBranch..getClass().getName()
+    println(type1)
     
     // stage('Test Stage'){
     //     sh "echo ${gitBranch}"
