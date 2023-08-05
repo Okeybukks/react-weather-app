@@ -12,7 +12,7 @@ node {
     def gitBranch = env.BRANCH_NAME
     
     // environment(gitBranch)
-    def type1 = gitBranch.getClass().getName()
+    def type1 = environment.call(gitBranch)
     println(type1)
     
     // stage('Test Stage'){

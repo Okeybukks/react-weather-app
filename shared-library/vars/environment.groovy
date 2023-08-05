@@ -7,5 +7,5 @@ def call(String gitBranch){
         envi = 'prod'
     }
 
-    println(envi)
+    return(envi)
 }
