@@ -10,15 +10,16 @@ node {
     ])
 
     def gitBranch = env.BRANCH_NAME
+    def envi = ""
 
     if(gitBranch =~ '^feat' || gitBranch =~ '^dev'){
-        def envi = 'dev'
+        envi = 'dev'
     }
     else if(gitBranch =~ '^mas') {
-        def envi = 'prod'
+        envi = 'prod'
     }
 
-    println(gitBranch)
+    println(env)
     
     // stage('Test Stage'){
     //     sh "echo ${gitBranch}"
