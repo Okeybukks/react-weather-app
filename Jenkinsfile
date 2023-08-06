@@ -12,21 +12,20 @@ node {
     def gitBranch = env.BRANCH_NAME
     
     // environment(gitBranch)
-    def envi = ''
-    if(gitBranch =~ '^feat' || gitBranch =~ '^dev'){
-        envi = 'dev'
-    }
-    else if(gitBranch =~ '^mas') {
-        envi = 'prod'
-    }
-
-    println(envi)
-    
-    
-    // stage('Test Stage'){
-    //     gitEnvironment(gitBranch)
-    //     gitEnvironment
+    // def envi = ''
+    // if(gitBranch =~ '^feat' || gitBranch =~ '^dev'){
+    //     envi = 'dev'
     // }
+    // else if(gitBranch =~ '^mas') {
+    //     envi = 'prod'
+    // }
+
+    // println(envi)
+    
+    
+    stage('Test Stage'){
+        helloWorld(firstName: "Achebe", lastName: "Okechukwu")
+    }
     // stage("Build Stage"){
 
     // }test
