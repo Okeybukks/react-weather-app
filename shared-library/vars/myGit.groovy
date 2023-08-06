@@ -9,3 +9,6 @@ def call(String gitBranch = '') {
 
     return envi
 }
+// def call(Map name = [:]) {
+//     return "Hello ${name.firstName} ${name.lastName}"
+// }
