@@ -24,7 +24,7 @@ node {
     
     
     stage('Test Stage'){
-       helloWorld("feature/")
+       helloWorld("feature")
     }
     // stage("Build Stage"){
 
