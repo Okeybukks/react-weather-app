@@ -19,6 +19,8 @@ node {
     else if(gitBranch =~ '^mas') {
         envi = 'prod'
     }
+
+    println(envi)
     
     
     // stage('Test Stage'){
