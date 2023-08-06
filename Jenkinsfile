@@ -24,7 +24,7 @@ node {
     
     
     stage('Test Stage'){
-       helloWorld(gitBranch)
+       myGit(gitBranch)
     }
     // stage("Build Stage"){
 
