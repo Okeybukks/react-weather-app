@@ -24,7 +24,7 @@ node {
     
     
     stage('Test Stage'){
-        helloWorld(firstName: "Achebe", lastName: "Okechukwu")
+        helloWorld(firstName: "Peter", lastName: "Okechukwu")
     }
     // stage("Build Stage"){
 
