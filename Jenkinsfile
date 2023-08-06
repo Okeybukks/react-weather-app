@@ -21,10 +21,10 @@ node {
     }
     
     
-    stage('Test Stage'){
-        gitEnvironment(gitBranch)
-        gitEnvironment
-    }
+    // stage('Test Stage'){
+    //     gitEnvironment(gitBranch)
+    //     gitEnvironment
+    // }
     // stage("Build Stage"){
 
     // }test
