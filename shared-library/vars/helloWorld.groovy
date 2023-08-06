@@ -2,7 +2,7 @@
 //     return "Hello ${name.firstName} ${name.lastName}"
 // }
 
-def call(String gitBranch){
+def call(String gitBranch) {
     def envi = ''
     if(gitBranch =~ '^feat' || gitBranch =~ '^dev'){
         envi = 'dev'
