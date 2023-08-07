@@ -1,4 +1,4 @@
-@Library('shared-library') _
+@Library('shared-library@feature/scripting-pipeline') _
 node {
     properties([
         buildDiscarder(
