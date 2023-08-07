@@ -13,7 +13,7 @@ node {
     
     
     stage('Test Stage'){
-        def branchEnv = myGit(gitBranch)
+        def branchEnv = myGitEnvironment(gitBranch)
         println(branchEnv)
     }
     // stage("Build Stage"){
