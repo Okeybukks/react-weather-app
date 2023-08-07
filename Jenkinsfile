@@ -24,7 +24,8 @@ node {
     
     
     stage('Test Stage'){
-       helloWorld.call(gitBranch)
+       def workingDir = checkoutCode("https://github.com/Okeybukks/react-weather-app.git", "feature/scripting-pipeline")
+        echo $workingDir
     }
     // stage("Build Stage"){
 
