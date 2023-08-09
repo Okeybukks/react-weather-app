@@ -15,6 +15,11 @@ node {
     stage('Test Stage'){
         def branchEnv = myGitEnvironment(gitBranch)
         println(branchEnv)
+
+        def nodeImage = docker.image("node")
+        nodeImage.inside{
+            sh "node -v"
+        }
     }
     // stage("Build Stage"){
 
