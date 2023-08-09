@@ -16,7 +16,7 @@ node {
         def branchEnv = myGitEnvironment(gitBranch)
         println(branchEnv)
 
-        def maven32 = docker.image("node");
+        def maven32 = docker.image("node:lts-alpine");
         maven32.inside{
             sh "node -v"
         }
