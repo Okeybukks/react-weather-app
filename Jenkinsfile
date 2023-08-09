@@ -16,9 +16,9 @@ node {
         def branchEnv = myGitEnvironment(gitBranch)
         println(branchEnv)
 
-        def maven32 = docker.image('maven:3.2-jdk-7-onbuild');
+        def maven32 = docker.image('node:lts-alpine');
         maven32.inside{
-            sh "mvn -v"
+            sh 'mvn -v'
         }
     }
     // stage("Build Stage"){
