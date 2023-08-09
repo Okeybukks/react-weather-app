@@ -18,7 +18,7 @@ node {
 
         def maven32 = docker.image('node:lts-alpine');
         maven32.inside{
-            sh 'mvn -v'
+            sh 'node -v'
         }
     }
     // stage("Build Stage"){
